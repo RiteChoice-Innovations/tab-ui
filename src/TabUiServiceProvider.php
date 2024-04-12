@@ -19,6 +19,12 @@ class TabUiServiceProvider extends PackageServiceProvider
             ->name('tab-ui')
             ->hasConfigFile()
             ->hasViews()
+            ->hasViewComponents('tab-ui')
             ->hasCommand(TabUiCommand::class);
+    }
+
+    public function boot()
+    {
+        dd("Hello from the package service provider");
     }
 }
