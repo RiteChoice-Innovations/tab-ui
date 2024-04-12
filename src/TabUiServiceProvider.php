@@ -4,7 +4,7 @@ namespace RiteChoiceInnovations\TabUi;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use RiteChoiceInnovations\TabUi\Commands\TabUiCommand;
+use RitechoiceInnovations\TabUi\Commands\TabUiCommand;
 
 class TabUiServiceProvider extends PackageServiceProvider
 {
@@ -19,7 +19,6 @@ class TabUiServiceProvider extends PackageServiceProvider
             ->name('tab-ui')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_tab-ui_table')
             ->hasCommand(TabUiCommand::class);
     }
 }

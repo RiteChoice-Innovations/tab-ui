@@ -2,8 +2,6 @@
 
 namespace RiteChoiceInnovations\TabUi;
 
-use JetBrains\PhpStorm\NoReturn;
-
 class TabUi
 {
   public function welcome(): string

@@ -1,6 +1,6 @@
 <?php
 
-namespace RiteChoiceInnovations\TabUi\Facades;
+namespace RitechoiceInnovations\TabUi\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -11,6 +11,6 @@ class TabUi extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \RiteChoiceInnovations\TabUi\TabUi::class;
+        return \RitechoiceInnovations\TabUi\TabUi::class;
     }
 }

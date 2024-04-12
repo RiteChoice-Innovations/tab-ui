@@ -1,6 +1,6 @@
 <?php
 
-namespace RiteChoice Innovations\TabUi\Commands;
+namespace RitechoiceInnovations\TabUi\Commands;
 
 use Illuminate\Console\Command;
 
