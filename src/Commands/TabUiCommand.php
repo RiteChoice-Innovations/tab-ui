@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace RiteChoice Innovations\TabUi\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class TabUiCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'tab-ui';
 
     public $description = 'My command';
 
