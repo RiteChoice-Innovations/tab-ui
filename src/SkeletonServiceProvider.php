@@ -1,12 +1,12 @@
 <?php
 
-namespace RiteChoiceInnovations\TabUi;
+namespace VendorName\Skeleton;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use RiteChoiceInnovations\TabUi\Commands\TabUiCommand;
+use VendorName\Skeleton\Commands\SkeletonCommand;
 
-class TabUiServiceProvider extends PackageServiceProvider
+class SkeletonServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class TabUiServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('tab-ui')
+            ->name('skeleton')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_tab-ui_table')
-            ->hasCommand(TabUiCommand::class);
+            ->hasMigration('create_skeleton_table')
+            ->hasCommand(SkeletonCommand::class);
     }
 }

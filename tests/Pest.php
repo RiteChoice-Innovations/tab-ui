@@ -1,5 +1,0 @@
-<?php
-
-use RiteChoiceInnovations\TabUi\Tests\TestCase;
-
-uses(TestCase::class)->in(__DIR__);

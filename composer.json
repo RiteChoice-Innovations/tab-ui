@@ -1,17 +1,17 @@
 {
-    "name": "ritechoice-innovations/tab-ui",
-    "description": "Tailwind CSS, Alpine Js and Blade UI component library",
+    "name": ":vendor_slug/:package_slug",
+    "description": ":package_description",
     "keywords": [
-        "Ritechoice Innovations",
+        ":vendor_name",
         "laravel",
-        "tab-ui"
+        ":package_slug"
     ],
-    "homepage": "https://github.com/ritechoice-innovations/tab-ui",
+    "homepage": "https://github.com/:vendor_slug/:package_slug",
     "license": "MIT",
     "authors": [
         {
-            "name": "Daramola Babatunde Ebenezer",
-            "email": "daramolatunde23@gmail.com",
+            "name": ":author_name",
+            "email": "author@domain.com",
             "role": "Developer"
         }
     ],
@@ -35,19 +35,19 @@
     },
     "autoload": {
         "psr-4": {
-            "RiteChoiceInnovations\\TabUi\\": "src/",
-            "RiteChoiceInnovations\\TabUi\\Database\\Factories\\": "database/factories/"
+            "VendorName\\Skeleton\\": "src/",
+            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RiteChoiceInnovations\\TabUi\\Tests\\": "tests/",
+            "VendorName\\Skeleton\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
     "scripts": {
         "post-autoload-dump": "@composer run prepare",
-        "clear": "@php vendor/bin/testbench package:purge-tab-ui --ansi",
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
         "prepare": "@php vendor/bin/testbench package:discover --ansi",
         "build": [
             "@composer run prepare",
@@ -73,10 +73,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "RiteChoiceInnovations\\TabUi\\TabUiServiceProvider"
+                "VendorName\\Skeleton\\SkeletonServiceProvider"
             ],
             "aliases": {
-                "TabUi": "RiteChoiceInnovations\\TabUi\\Facades\\TabUi"
+                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
             }
         }
     },
