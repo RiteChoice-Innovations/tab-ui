@@ -4,7 +4,7 @@ namespace RiteChoiceInnovations\TabUi;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use RitechoiceInnovations\TabUi\Commands\TabUiCommand;
+use RiteChoiceInnovations\TabUi\Commands\TabUiCommand;
 
 class TabUiServiceProvider extends PackageServiceProvider
 {
@@ -19,12 +19,6 @@ class TabUiServiceProvider extends PackageServiceProvider
             ->name('tab-ui')
             ->hasConfigFile()
             ->hasViews()
-            ->hasViewComponents('tab-ui')
             ->hasCommand(TabUiCommand::class);
-    }
-
-    public function boot()
-    {
-        dd("Hello from the package service provider");
     }
 }
