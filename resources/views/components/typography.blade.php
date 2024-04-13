@@ -1,24 +1,25 @@
-@props(['variant' => 'body1', 'tag' => 'p', 'color' => 'blue'])
+@props(['variant' => 'body1', 'tag' => 'p', 'value' => ''])
 @php
 $classes = [
 'h1' => 'scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl',
-'h2' => 'text-3xl font-bold mb-3',
-'h3' => 'text-2xl font-bold mb-2',
-'h4' => 'text-xl font-bold mb-2',
-'h5' => 'text-lg font-bold mb-1',
-'h6' => 'text-base font-bold mb-1',
-'subtitle1' => 'text-lg mb-4',
-'subtitle2' => 'text-md mb-3',
-'body1' => 'text-base mb-4',
-'body2' => 'text-sm mb-3',
-'button' => "text-base font-semibold px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600",
-'caption' => 'text-xs text-gray-500',
-'overline' => 'text-xs uppercase text-gray-500',
+'h2' => 'scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0',
+'h3' => 'scroll-m-20 text-2xl font-semibold tracking-tight',
+'h4' => 'scroll-m-20 text-xl font-semibold tracking-tight',
+'h5' => 'scroll-m-20 text-lg font-semibold tracking-tight',
+'h6' => 'scroll-m-20 text-base font-semibold tracking-tight',
+'p' => 'leading-7 [&:not(:first-child)]:mt-6',
+'blockquote' => 'mt-6 border-l-2 pl-6 italic',
+'code' => 'relative rounded bg-slate-300 px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold',
+'lead' => 'text-xl',
+'large' => 'text-lg font-semibold',
+'small' => 'text-sm font-medium leading-none',
+'caption' => 'text-xs',
+'overline' => 'text-xs uppercase',
 ];
 $class = $classes[$variant] ?? $classes['body1'];
 $tag = strtolower(str($variant)->startsWith('h') ? $variant : $tag);
 @endphp
 
 <{{ $tag }} {!!  $attributes->merge(['class' => $class]) !!}>
-    {{ $slot }}
+    {!! $value ?? $slot !!}
 </{{ $tag }}>
