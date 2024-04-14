@@ -3,11 +3,8 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ritechoice-innovations/tab-ui.svg?style=flat-square)](https://packagist.org/packages/ritechoice-innovations/tab-ui)
 [![Total Downloads](https://img.shields.io/packagist/dt/ritechoice-innovations/tab-ui.svg?style=flat-square)](https://packagist.org/packages/ritechoice-innovations/tab-ui)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[//]: # ([<img src="https://github-ads.s3.eu-central-1.amazonaws.com/tab-ui.jpg?t=1" width="419px" />]&#40;https://spatie.be/github-ad-click/tab-ui&#41;)
+This package provides a set of Blade components to make it easy to create UI in your Laravel applications.
+Though still in active development, but you can try it out in your local projects.
 
 ## Installation
 
@@ -16,7 +13,6 @@ You can install the package via composer:
 ```bash
 composer require ritechoice-innovations/tab-ui
 ```
-
 
 You can publish the config file with:
 

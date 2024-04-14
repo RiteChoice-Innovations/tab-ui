@@ -1,65 +1,64 @@
 {
-    "name": "ritechoice-innovations/tab-ui",
-    "description": "Tailwind CSS, Alpine Js and Blade UI component library",
-    "keywords": [
-        "RiteChoice Innovations",
-        "laravel",
-        "tab-ui"
-    ],
-    "homepage": "https://github.com/ritechoice-innovations/tab-ui",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Daramola Babatunde Ebenezer",
-            "email": "daramolatunde23@gmail.com",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "php": "^8.2",
-        "spatie/laravel-package-tools": "^1.16",
-        "illuminate/contracts": "^10.0||^11.0"
-    },
-    "require-dev": {
-        "laravel/pint": "^1.14",
-        "nunomaduro/collision": "^8.1.1||^7.10.0",
-        "orchestra/testbench": "^9.0.0||^8.22.0",
-        "pestphp/pest": "^2.34",
-        "pestphp/pest-plugin-arch": "^2.7",
-        "pestphp/pest-plugin-laravel": "^2.3"
-    },
-    "autoload": {
-        "psr-4": {
-            "RiteChoiceInnovations\\TabUi\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-
-        }
-    },
-    "scripts": {
-        "test": "vendor/bin/pest",
-        "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint"
-    },
-    "config": {
-        "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true,
-            "phpstan/extension-installer": true
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "RiteChoiceInnovations\\TabUi\\TabUiServiceProvider"
-            ],
-            "aliases": {
-                "TabUi": "RiteChoiceInnovations\\TabUi\\Facades\\TabUi"
-            }
-        }
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+  "name": "ritechoice-innovations/tab-ui",
+  "description": "Tailwind CSS, Alpine Js and Blade UI component library",
+  "keywords": [
+    "RiteChoice Innovations",
+    "laravel",
+    "tab-ui"
+  ],
+  "homepage": "https://github.com/ritechoice-innovations/tab-ui",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Daramola Babatunde Ebenezer",
+      "email": "daramolatunde23@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "spatie/laravel-package-tools": "^1.16",
+    "illuminate/contracts": "^10.0||^11.0"
+  },
+  "require-dev": {
+    "laravel/pint": "^1.14",
+    "nunomaduro/collision": "^8.1.1||^7.10.0",
+    "orchestra/testbench": "^9.0.0||^8.22.0",
+    "pestphp/pest": "^2.34",
+    "pestphp/pest-plugin-arch": "^2.7",
+    "pestphp/pest-plugin-laravel": "^2.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "RiteChoiceInnovations\\TabUi\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/pest",
+    "test-coverage": "vendor/bin/pest --coverage",
+    "format": "vendor/bin/pint"
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true,
+      "phpstan/extension-installer": true
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "RiteChoiceInnovations\\TabUi\\TabUiServiceProvider"
+      ],
+      "aliases": {
+        "TabUi": "RiteChoiceInnovations\\TabUi\\Facades\\TabUi"
+      }
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }
