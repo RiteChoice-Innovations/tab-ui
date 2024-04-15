@@ -1,17 +1,119 @@
-@php use RiteChoiceInnovations\TabUi\Theme\Button; @endphp
-@props([
-    'variant' => 'solid',
-    'color' => 'primary',
-    'rounded' => 'xl',
-    'size' => 'md'
-])
-@php
-    $baseClass = "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium
+<?php
+
+namespace RiteChoiceInnovations\TabUi\Theme;
+
+class Button
+{
+    public string $variant;
+    public string $color;
+    public string $size;
+    public string $rounded;
+
+    private string $variantClasses;
+    private string $sizeClasses;
+    private string $roundedClasses;
+    private string $baseClass;
+
+    public function __construct(string $variant = 'solid', string $color = 'primary', string $size = 'md', string $rounded = 'md')
+    {
+        $this->variant = $variant;
+        $this->color = $color;
+        $this->size = $size;
+        $this->rounded = $rounded;
+    }
+
+    public static function make(string $variant = 'solid', string $color = 'primary', string $size = 'md', string $rounded = 'md'): self
+    {
+        return new static($variant, $color, $size, $rounded);
+    }
+
+    public function render(): string
+    {
+        return $this->generateClasses();
+    }
+
+    private function generateClasses(): string
+    {
+        $this->baseClass();
+        $this->rounded($this->rounded);
+        $this->size($this->size);
+        $this->variant($this->variant, $this->color);
+        return "{$this->baseClass} {$this->variantClasses} {$this->sizeClasses} {$this->roundedClasses}";
+    }
+
+    public function baseClass(): static
+    {
+        $this->baseClass = $this->setBaseClasses();
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function setBaseClasses(): string
+    {
+        return "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium
     ring-offset-white disabled:pointer-events-none disabled:opacity-65
     transition-colors focus-visible:outline-none focus-visible:ring-2
     focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none
     disabled:opacity-50 dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300";
-    $variants = [
+    }
+
+    public function rounded(string $rounded = null): static
+    {
+        $rounded = $rounded ?? $this->rounded;
+        $this->roundedClasses = $this->setRoundedClasses()[$rounded] ?? "rounded-xl";
+        return $this;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function setRoundedClasses(): array
+    {
+        return [
+            "none" => "rounded-none",
+            "sm" => "rounded-sm",
+            "md" => "rounded-md",
+            "lg" => "rounded-lg",
+            "xl" => "rounded-xl",
+            "full" => "rounded-full",
+        ];
+    }
+
+    public function size(string $size = null): static
+    {
+        $size = $size ?? $this->size;
+        $this->sizeClasses = $this->setSizeClasses()[$size] ?? "h-10 px-4 py-2";
+
+        return $this;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function setSizeClasses(): array
+    {
+        return [
+            "md" => "h-10 px-4 py-2",
+            "sm" => "h-9 rounded-md px-3",
+            "xs" => "h-6 rounded-md px-1",
+            "lg" => "h-11 rounded-md px-8",
+            "icon" => "h-10 w-10",
+        ];
+    }
+
+    public function variant(string $variant = null, string $color = null): static
+    {
+        $color = $color ?? $this->color;
+        $variant = $variant ?? $this->variant;
+        $this->variantClasses = $this->setVariantClasses()[$variant][$color] ?? ['solid']['primary'];
+        return $this;
+    }
+
+    public function setVariantClasses(): array
+    {
+        return [
             'solid' => [
                 'primary' => 'bg-gray-900 text-slate-50 hover:bg-gray-900/80 dark:bg-slate-50 dark:text-gray-500 dark:hover:bg-slate-100',
                 'secondary' => 'bg-blue-500 text-slate-50 hover:bg-blue-500/90 dark:bg-blue-900 dark:text-slate-50 dark:hover:bg-blue-900/90',
@@ -44,28 +146,17 @@
                 'positive' => 'text-green-500 underline-offset-4 hover:text-green-900 dark:text-green-900 dark:hover:text-slate-50',
                 'info' => 'text-indigo-500 underline-offset-4 hover:text-indigo-900 dark:text-indigo-900 dark:hover:text-slate-50',
             ],
-        ][$variant][$color] ?? ['solid']['primary'];
+        ];
+    }
 
-    $sizes = [
-         "md" => "h-10 px-4 py-2",
+    public function setColorClasses(): array
+    {
+        return [
+            "md" => "h-10 px-4 py-2",
             "sm" => "h-9 rounded-md px-3",
             "xs" => "h-6 rounded-md px-1",
             "lg" => "h-11 rounded-md px-8",
             "icon" => "h-10 w-10",
-    ][ $size] ?? ['md'];
-
-    $rounded = [
-        'none' => 'rounded-none',
-        'sm' => 'rounded-sm',
-        'md' => 'rounded-md',
-        'lg' => 'rounded-lg',
-        'xl' => 'rounded-xl',
-        'full' => 'rounded-full',
-    ][ $rounded] ?? ['xl'];
-
-    $class = "{$baseClass} {$variants} {$sizes} {$rounded}";
-@endphp
-
-<button {{ $attributes->merge(['type' => 'submit', 'class' => $class]) }}>
-    {{ $slot }}
-</button>
+        ];
+    }
+}
