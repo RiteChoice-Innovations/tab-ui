@@ -1,5 +1,9 @@
+@php
+    $theme = config('tab-ui.theme.card');
+    $class = $theme::make()->render()['base'];
+@endphp
 <div {{$attributes->merge([
-    'class' => 'rounded-lg border bg-card text-card-foreground shadow-sm'
+    'class' => $class
 ])}}>
-{{$slot}}
+    {{$slot}}
 </div>

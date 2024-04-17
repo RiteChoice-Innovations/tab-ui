@@ -3,14 +3,19 @@
     'description'=>'',
 ])
 
+@php
+    $theme = config('tab-ui.theme.card');
+    $class = $theme::make()->render();
+@endphp
+
 <div {{$attributes->merge([
-    'class' => 'flex flex-col space-y-1.5 p-6'
+    'class' => $class['head']
 ])}}>
     @if($title)
-        <h3 class="text-2xl font-semibold leading-none tracking-tight">{{ $title }}</h3>
+        <h3 class="{{$class['title']}}">{{ $title }}</h3>
     @endif
     @if($description)
-        <p class="text-sm text-slate-500">
+        <p class="{{$class['description']}}">
             {{ $description }}
         </p>
     @endif

@@ -1,5 +1,9 @@
+@php
+    $theme = config('tab-ui.theme.card');
+    $class = $theme::make()->render()['content'];
+@endphp
 <div {{$attributes->merge([
-    'class' => 'p-6 pt-0'
+    'class' => $class
 ])}}>
     {{$slot}}
 </div>

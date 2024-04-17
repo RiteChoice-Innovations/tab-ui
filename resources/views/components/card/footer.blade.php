@@ -1,5 +1,9 @@
+@php
+    $theme = config('tab-ui.theme.card');
+    $class = $theme::make()->render()['footer'];
+@endphp
 <div {{$attributes->merge([
-    'class' => 'flex flex-col space-y-1.5 p-6'
+    'class' => $class
 ])}}>
     @if($slot)
         <div>

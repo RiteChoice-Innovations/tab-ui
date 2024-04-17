@@ -1,18 +1,11 @@
 <?php
 
 use RiteChoiceInnovations\TabUi\Theme\Button;
+use RiteChoiceInnovations\TabUi\Theme\Card;
 
 return [
     'theme' => [
         'button' => Button::class,
+        'card' => Card::class,
     ],
-
-    'color' => [
-        'primary' => 'blue',
-        'secondary' => 'gray',
-        'danger' => 'red',
-        'warning' => 'yellow',
-        'positive' => 'green',
-        'info' => 'indigo',
-    ]
 ];
