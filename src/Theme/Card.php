@@ -22,7 +22,7 @@ class Card
             'head' => $this->headClasses(),
             'title' => $this->titleClasses(),
             'description' => $this->descriptionClasses(),
-            'base' => $this->baseClasses()
+            'root' => $this->rootClasses(),
         ];
     }
 
@@ -51,7 +51,7 @@ class Card
         return "text-sm text-slate-500 $class";
     }
 
-    public function baseClasses($class = ""): string
+    public function rootClasses($class = ""): string
     {
         return "rounded-lg border bg-card text-card-foreground shadow-sm $class";
     }
