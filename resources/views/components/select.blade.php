@@ -1,6 +1,8 @@
 @props([
     'disabled' => false,
-    'color' => 'blue',
+    'variant' => 'outlined',
+    'color' => 'primary',
+    'rounded' => 'md',
     'label' => '',
     'helpText' => '',
 ])
@@ -9,13 +11,9 @@
     $name = $attributes->get('name');
     $id = $attributes->get('id');
     $hasError = (boolean) $errors->get($name);
-
-        $class = "border-gray-300 dark:border-gray-700
-    dark:bg-gray-900 dark:text-gray-300 focus:border-{$color}-500 dark:focus:border-{$color}-600
-    focus:ring-{$color}-500
-    dark:focus:ring-{$color}-600 rounded-md shadow-sm file:border-0 file:bg-transparent file:text-sm
-    file:font-medium placeholder:text-slate-400";
-
+    $theme = config('tab-ui.theme.input');
+     $color = $hasError ? 'negative' : $color;
+    $class = $theme::make()->variant($variant)->color($color)->rounded($rounded)->render();
 @endphp
 <div>
     @if($label)

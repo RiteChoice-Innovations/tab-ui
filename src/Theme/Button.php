@@ -58,14 +58,7 @@ class Button
      */
     private function setRoundedClasses(): array
     {
-        return [
-            "none" => "rounded-none",
-            "sm" => "rounded-sm",
-            "md" => "rounded-md",
-            "lg" => "rounded-lg",
-            "xl" => "rounded-xl",
-            "full" => "rounded-full",
-        ];
+        return Classes::rounded();
     }
 
     public function size(string $size = null): static
@@ -109,7 +102,7 @@ class Button
         return [
             'solid' => $this->solidVariantClasses(),
             'outlined' => $this->outlinedVariantClasses(),
-            'ghost' => $this->ghostVariantClasses(),
+            'transparent' => $this->transparentVariantClasses(),
             'link' => $this->linkVariantClasses(),
         ];
     }
@@ -122,7 +115,7 @@ class Button
         return [
             'primary' => 'bg-primary-900 text-slate-50 hover:bg-primary-900/80 dark:bg-slate-50 dark:text-primary-500 dark:hover:bg-slate-100',
             'secondary' => 'bg-secondary-500 text-slate-50 hover:bg-secondary-500/90 dark:bg-secondary-900 dark:text-slate-50 dark:hover:bg-secondary-900/90',
-            'danger' => 'bg-danger-500 text-slate-50 hover:bg-danger-500/90 dark:bg-danger-900 dark:text-slate-50 dark:hover:bg-danger-900/90',
+            'negative' => 'bg-negative-500 text-slate-50 hover:bg-negative-500/90 dark:bg-negative-900 dark:text-slate-50 dark:hover:bg-negative-900/90',
             'warning' => 'bg-warning-500 text-slate-50 hover:bg-warning-500/90 dark:bg-warning-900 dark:text-slate-50 dark:hover:bg-warning-900/90',
             'positive' => 'bg-positive-500 text-slate-50 hover:bg-positive-500/90 dark:bg-positive-900 dark:text-slate-50 dark:hover:bg-positive-900/90',
             'info' => 'bg-info-500 text-slate-50 hover:bg-info-500/90 dark:bg-info-900 dark:text-slate-50 dark:hover:bg-info-900/90',
@@ -137,7 +130,7 @@ class Button
         return [
             'primary' => 'border border-slate-200 hover:text-slate-50 bg-white hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50',
             'secondary' => 'border border-secondary-500 bg-white text-secondary-500 hover:text-slate-50 hover:bg-secondary-500/90 hover:border-secondary-600 dark:border-secondary-900 dark:bg-secondary-900 dark:hover:bg-secondary-900/90 dark:hover:text-slate-50',
-            'danger' => 'border border-danger-500 bg-white text-danger-500 hover:text-slate-50 hover:bg-danger-500/90 hover:border-danger-600 dark:border-danger-900 dark:bg-danger-900 dark:hover:bg-danger-900/90 dark:hover:text-slate-50',
+            'negative' => 'border border-negative-500 bg-white text-negative-500 hover:text-slate-50 hover:bg-negative-500/90 hover:border-negative-600 dark:border-negative-900 dark:bg-negative-900 dark:hover:bg-negative-900/90 dark:hover:text-slate-50',
             'warning' => 'border border-warning-500 bg-white hover:text-slate-50 text-warning-500 hover:bg-warning-500/90 hover:border-warning-600 dark:border-warning-900 dark:bg-warning-900 dark:hover:bg-warning-900/90 dark:hover:text-slate-50',
             'positive' => 'border border-positive-500 bg-white text-positive-500 hover:text-slate-50 hover:bg-positive-500/90 hover:border-positive-600 dark:border-positive-900 dark:bg-positive-900 dark:hover:bg-positive-900/90 dark:hover:text-slate-50',
             'info' => 'border border-info-500 bg-white hover:text-slate-50 text-info-500 hover:bg-info-500/90 hover:border-info-600 dark:border-info-900 dark:bg-info-900 dark:hover:bg-info-900/90 dark:hover:text-slate-50',
@@ -147,12 +140,12 @@ class Button
     /**
      * @return string[]
      */
-    private function ghostVariantClasses(): array
+    private function transparentVariantClasses(): array
     {
         return [
             'primary' => 'hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50',
             'secondary' => 'hover:bg-secondary-100 hover:text-secondary-900 dark:hover:bg-secondary-800 dark:hover:text-slate-50',
-            'danger' => 'hover:bg-danger-100 hover:text-danger-900 dark:hover:bg-danger-900 dark:hover:text-slate-50',
+            'negative' => 'hover:bg-negative-100 hover:text-negative-900 dark:hover:bg-negative-900 dark:hover:text-slate-50',
             'warning' => 'hover:bg-warning-100 hover:text-warning-900 dark:hover:bg-warning-900 dark:hover:text-slate-50',
             'positive' => 'hover:bg-positive-100 hover:text-positive-900 dark:hover:bg-positive-900 dark:hover:text-slate-50',
             'info' => 'hover:bg-info-100 hover:text-info-900 dark:hover:bg-info-900 dark:hover:text-slate-50',
@@ -167,7 +160,7 @@ class Button
         return [
             'primary' => 'text-primary-900 underline-offset-4 hover:underline dark:text-primary-50',
             'secondary' => 'text-secondary-500 underline-offset-4 hover:text-secondary-900 dark:text-secondary-900 dark:hover:text-slate-50',
-            'danger' => 'text-danger-500 underline-offset-4 hover:text-danger-900 dark:text-danger-900 dark:hover:text-slate-50',
+            'negative' => 'text-negative-500 underline-offset-4 hover:text-negative-900 dark:text-negative-900 dark:hover:text-slate-50',
             'warning' => 'text-warning-500 underline-offset-4 hover:text-warning-900 dark:text-warning-900 dark:hover:text-slate-50',
             'positive' => 'text-positive-500 underline-offset-4 hover:text-positive-900 dark:text-positive-900 dark:hover:text-slate-50',
             'info' => 'text-info-500 underline-offset-4 hover:text-info-900 dark:text-info-900 dark:hover:text-slate-50',

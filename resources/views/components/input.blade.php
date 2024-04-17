@@ -1,21 +1,20 @@
+@php use RiteChoiceInnovations\TabUi\Theme\Input; @endphp
 @props([
     'disabled' => false,
-    'color' => 'blue',
+    'variant' => 'outlined',
+    'color' => 'primary',
+    'rounded' => 'md',
     'label' => '',
     'helpText' => '',
 ])
 
 @php
-$name = $attributes->get('name');
-$id = $attributes->get('id');
-$hasError = (boolean) $errors->get($name);
-
-    $class = "border-gray-300 dark:border-gray-700
-dark:bg-gray-900 dark:text-gray-300 focus:border-{$color}-500 dark:focus:border-{$color}-600
-focus:ring-{$color}-500
-dark:focus:ring-{$color}-600 rounded-md shadow-sm file:border-0 file:bg-transparent file:text-sm
-file:font-medium placeholder:text-slate-400";
-
+    $name = $attributes->get('name');
+    $id = $attributes->get('id');
+    $hasError = (boolean) $errors->get($name);
+    $color = $hasError ? 'negative' : $color;
+    $theme = config('tab-ui.theme.input');
+    $class = $theme::make()->variant($variant)->color($color)->rounded($rounded)->render();
 @endphp
 <div>
     @if($label)
@@ -28,7 +27,7 @@ file:font-medium placeholder:text-slate-400";
         <x-tab-ui::typography variant="caption" :value="$helpText" class="mt-2"/>
     @endif
 
-   @if($hasError)
+    @if($hasError)
         <x-tab-ui::input-error :for="$name" class="mt-2"/>
-   @endif
+    @endif
 </div>

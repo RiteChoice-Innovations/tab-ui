@@ -7,5 +7,6 @@ return [
     'theme' => [
         'button' => RiteChoiceInnovations\TabUi\Theme\Button::class,
         'card' => Card::class,
+        'input' => RiteChoiceInnovations\TabUi\Theme\Input::class,
     ],
 ];
