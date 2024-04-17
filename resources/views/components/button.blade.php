@@ -6,11 +6,10 @@
     'size' => 'md'
 ])
 @php
-
     $theme = config('tab-ui.theme.button');
         $class = $theme::make()
-        ->variant($variant)
         ->color($color)
+        ->variant($variant)
         ->rounded($rounded)
         ->size($size)
         ->render();

@@ -12,7 +12,6 @@ class Button
     private string $variantClasses;
     private string $sizeClasses;
     private string $roundedClasses;
-    private string $baseClass;
 
     public static function make(): self
     {
@@ -26,22 +25,19 @@ class Button
 
     private function generateClasses(): string
     {
-        $this->baseClass();
+        $base = $this->baseClasses();
         $this->rounded($this->rounded);
         $this->size($this->size);
-        $this->variant($this->variant, $this->color);
-        return "{$this->baseClass} {$this->variantClasses} {$this->sizeClasses} {$this->roundedClasses}";
+        $this->color($this->color);
+        $this->variant($this->variant);
+        return "{$base} {$this->variantClasses} {$this->sizeClasses} {$this->roundedClasses}";
     }
 
-    private function baseClass(): void
-    {
-        $this->baseClass = $this->setBaseClasses();
-    }
 
     /**
      * @return string
      */
-    private function setBaseClasses(): string
+    private function baseClasses(): string
     {
         return "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium
     ring-offset-white disabled:pointer-events-none disabled:opacity-65
@@ -75,14 +71,14 @@ class Button
     public function size(string $size = null): static
     {
         $size = $size ?? $this->size;
-        $this->sizeClasses = $this->setSizeClasses()[$size] ?? "h-10 px-4 py-2";
+        $this->sizeClasses = $this->sizeClasses()[$size] ?? "h-10 px-4 py-2";
         return $this;
     }
 
     /**
      * @return string[]
      */
-    private function setSizeClasses(): array
+    private function sizeClasses(): array
     {
         return [
             "md" => "h-10 px-4 py-2",
@@ -93,15 +89,22 @@ class Button
         ];
     }
 
-    public function variant(string $variant = null): static
+    public function color(string $color = null): static
     {
-        $color = $color ?? $this->color;
-        $variant = $variant ?? $this->variant;
-        $this->variantClasses = $this->setVariantClasses()[$variant][$color] ?? ['solid']['primary'];
+        $this->color = $color ?? $this->color;
         return $this;
     }
 
-    private function setVariantClasses(): array
+    public function variant(string $variant = null): static
+    {
+        $this->variant = $variant ?? $this->variant;
+        $color = $this->color;
+        $this->variantClasses = $this->variantClasses()[$variant][$color] ?? ['solid']['primary'];
+//        dd($this->variant);
+        return $this;
+    }
+
+    private function variantClasses(): array
     {
         return [
             'solid' => $this->solidVariantClasses(),
@@ -117,12 +120,12 @@ class Button
     public function solidVariantClasses(): array
     {
         return [
-            'primary' => 'bg-gray-900 text-slate-50 hover:bg-gray-900/80 dark:bg-slate-50 dark:text-gray-500 dark:hover:bg-slate-100',
-            'secondary' => 'bg-blue-500 text-slate-50 hover:bg-blue-500/90 dark:bg-blue-900 dark:text-slate-50 dark:hover:bg-blue-900/90',
-            'danger' => 'bg-red-500 text-slate-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90',
-            'warning' => 'bg-yellow-500 text-slate-50 hover:bg-yellow-500/90 dark:bg-yellow-900 dark:text-slate-50 dark:hover:bg-yellow-900/90',
-            'positive' => 'bg-green-500 text-slate-50 hover:bg-green-500/90 dark:bg-green-900 dark:text-slate-50 dark:hover:bg-green-900/90',
-            'info' => 'bg-indigo-500 text-slate-50 hover:bg-indigo-500/90 dark:bg-indigo-900 dark:text-slate-50 dark:hover:bg-indigo-900/90',
+            'primary' => 'bg-primary-900 text-slate-50 hover:bg-primary-900/80 dark:bg-slate-50 dark:text-primary-500 dark:hover:bg-slate-100',
+            'secondary' => 'bg-secondary-500 text-slate-50 hover:bg-secondary-500/90 dark:bg-secondary-900 dark:text-slate-50 dark:hover:bg-secondary-900/90',
+            'danger' => 'bg-danger-500 text-slate-50 hover:bg-danger-500/90 dark:bg-danger-900 dark:text-slate-50 dark:hover:bg-danger-900/90',
+            'warning' => 'bg-warning-500 text-slate-50 hover:bg-warning-500/90 dark:bg-warning-900 dark:text-slate-50 dark:hover:bg-warning-900/90',
+            'positive' => 'bg-positive-500 text-slate-50 hover:bg-positive-500/90 dark:bg-positive-900 dark:text-slate-50 dark:hover:bg-positive-900/90',
+            'info' => 'bg-info-500 text-slate-50 hover:bg-info-500/90 dark:bg-info-900 dark:text-slate-50 dark:hover:bg-info-900/90',
         ];
     }
 
@@ -132,12 +135,12 @@ class Button
     private function outlinedVariantClasses(): array
     {
         return [
-            'primary' => 'border border-slate-200 bg-white hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50',
-            'secondary' => 'border border-blue-500 bg-white text-blue-500 hover:bg-blue-500/90 hover:border-blue-600 dark:border-blue-900 dark:bg-blue-900 dark:hover:bg-blue-900/90 dark:hover:text-slate-50',
-            'danger' => 'border border-red-500 bg-white text-red-500 hover:bg-red-500/90 hover:border-red-600 dark:border-red-900 dark:bg-red-900 dark:hover:bg-red-900/90 dark:hover:text-slate-50',
-            'warning' => 'border border-yellow-500 bg-white text-yellow-500 hover:bg-yellow-500/90 hover:border-yellow-600 dark:border-yellow-900 dark:bg-yellow-900 dark:hover:bg-yellow-900/90 dark:hover:text-slate-50',
-            'positive' => 'border border-green-500 bg-white text-green-500 hover:bg-green-500/90 hover:border-green-600 dark:border-green-900 dark:bg-green-900 dark:hover:bg-green-900/90 dark:hover:text-slate-50',
-            'info' => 'border border-indigo-500 bg-white text-indigo-500 hover:bg-indigo-500/90 hover:border-indigo-600 dark:border-indigo-900 dark:bg-indigo-900 dark:hover:bg-indigo-900/90 dark:hover:text-slate-50',
+            'primary' => 'border border-slate-200 hover:text-slate-50 bg-white hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50',
+            'secondary' => 'border border-secondary-500 bg-white text-secondary-500 hover:text-slate-50 hover:bg-secondary-500/90 hover:border-secondary-600 dark:border-secondary-900 dark:bg-secondary-900 dark:hover:bg-secondary-900/90 dark:hover:text-slate-50',
+            'danger' => 'border border-danger-500 bg-white text-danger-500 hover:text-slate-50 hover:bg-danger-500/90 hover:border-danger-600 dark:border-danger-900 dark:bg-danger-900 dark:hover:bg-danger-900/90 dark:hover:text-slate-50',
+            'warning' => 'border border-warning-500 bg-white hover:text-slate-50 text-warning-500 hover:bg-warning-500/90 hover:border-warning-600 dark:border-warning-900 dark:bg-warning-900 dark:hover:bg-warning-900/90 dark:hover:text-slate-50',
+            'positive' => 'border border-positive-500 bg-white text-positive-500 hover:text-slate-50 hover:bg-positive-500/90 hover:border-positive-600 dark:border-positive-900 dark:bg-positive-900 dark:hover:bg-positive-900/90 dark:hover:text-slate-50',
+            'info' => 'border border-info-500 bg-white hover:text-slate-50 text-info-500 hover:bg-info-500/90 hover:border-info-600 dark:border-info-900 dark:bg-info-900 dark:hover:bg-info-900/90 dark:hover:text-slate-50',
         ];
     }
 
@@ -148,11 +151,11 @@ class Button
     {
         return [
             'primary' => 'hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50',
-            'secondary' => 'hover:bg-blue-100 hover:text-blue-900 dark:hover:bg-blue-800 dark:hover:text-slate-50',
-            'danger' => 'hover:bg-red-100 hover:text-red-900 dark:hover:bg-red-900 dark:hover:text-slate-50',
-            'warning' => 'hover:bg-yellow-100 hover:text-yellow-900 dark:hover:bg-yellow-900 dark:hover:text-slate-50',
-            'positive' => 'hover:bg-green-100 hover:text-green-900 dark:hover:bg-green-900 dark:hover:text-slate-50',
-            'info' => 'hover:bg-indigo-100 hover:text-indigo-900 dark:hover:bg-indigo-900 dark:hover:text-slate-50',
+            'secondary' => 'hover:bg-secondary-100 hover:text-secondary-900 dark:hover:bg-secondary-800 dark:hover:text-slate-50',
+            'danger' => 'hover:bg-danger-100 hover:text-danger-900 dark:hover:bg-danger-900 dark:hover:text-slate-50',
+            'warning' => 'hover:bg-warning-100 hover:text-warning-900 dark:hover:bg-warning-900 dark:hover:text-slate-50',
+            'positive' => 'hover:bg-positive-100 hover:text-positive-900 dark:hover:bg-positive-900 dark:hover:text-slate-50',
+            'info' => 'hover:bg-info-100 hover:text-info-900 dark:hover:bg-info-900 dark:hover:text-slate-50',
         ];
     }
 
@@ -162,18 +165,12 @@ class Button
     private function linkVariantClasses(): array
     {
         return [
-            'primary' => 'text-slate-900 underline-offset-4 hover:underline dark:text-slate-50',
-            'secondary' => 'text-blue-500 underline-offset-4 hover:text-blue-900 dark:text-blue-900 dark:hover:text-slate-50',
-            'danger' => 'text-red-500 underline-offset-4 hover:text-red-900 dark:text-red-900 dark:hover:text-slate-50',
-            'warning' => 'text-yellow-500 underline-offset-4 hover:text-yellow-900 dark:text-yellow-900 dark:hover:text-slate-50',
-            'positive' => 'text-green-500 underline-offset-4 hover:text-green-900 dark:text-green-900 dark:hover:text-slate-50',
-            'info' => 'text-indigo-500 underline-offset-4 hover:text-indigo-900 dark:text-indigo-900 dark:hover:text-slate-50',
+            'primary' => 'text-primary-900 underline-offset-4 hover:underline dark:text-primary-50',
+            'secondary' => 'text-secondary-500 underline-offset-4 hover:text-secondary-900 dark:text-secondary-900 dark:hover:text-slate-50',
+            'danger' => 'text-danger-500 underline-offset-4 hover:text-danger-900 dark:text-danger-900 dark:hover:text-slate-50',
+            'warning' => 'text-warning-500 underline-offset-4 hover:text-warning-900 dark:text-warning-900 dark:hover:text-slate-50',
+            'positive' => 'text-positive-500 underline-offset-4 hover:text-positive-900 dark:text-positive-900 dark:hover:text-slate-50',
+            'info' => 'text-info-500 underline-offset-4 hover:text-info-900 dark:text-info-900 dark:hover:text-slate-50',
         ];
-    }
-
-    public function color(string $color = null): static
-    {
-        $this->color = $color ?? $this->color;
-        return $this;
     }
 }

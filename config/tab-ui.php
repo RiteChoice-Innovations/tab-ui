@@ -1,11 +1,11 @@
 <?php
 
-use RiteChoiceInnovations\TabUi\Theme\Button;
+
 use RiteChoiceInnovations\TabUi\Theme\Card;
 
 return [
     'theme' => [
-        'button' => Button::class,
+        'button' => RiteChoiceInnovations\TabUi\Theme\Button::class,
         'card' => Card::class,
     ],
 ];
