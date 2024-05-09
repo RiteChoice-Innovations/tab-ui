@@ -6,5 +6,8 @@
 @endphp
 
 <{!!  $tag !!} {!!  $attributes->merge(['class' => $class]) !!}>
-{!! $value ?? $slot !!}
+@if($value)
+    {!! $value !!}
+@endif
+{{ $slot }}
 </{!!  $tag !!}>
