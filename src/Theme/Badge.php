@@ -2,6 +2,8 @@
 
 namespace RiteChoiceInnovations\TabUi\Theme;
 
+use RiteChoiceInnovations\TabUi\Theme\Base\Rounded;
+
 class Badge
 {
     private string $variant = 'solid';
@@ -54,7 +56,7 @@ class Badge
      */
     private function setRoundedClasses(): array
     {
-        return Classes::rounded();
+        return Rounded::rounded();
     }
 
     public function size(string $size = null): static
@@ -89,7 +91,6 @@ class Badge
         $this->variant = $variant ?? $this->variant;
         $color = $this->color;
         $this->variantClasses = $this->variantClasses()[$variant][$color] ?? ['solid']['primary'];
-//        dd($this->variant);
         return $this;
     }
 
@@ -122,12 +123,12 @@ class Badge
     private function outlinedVariantClasses(): array
     {
         return [
-            'primary' => 'bg-primary-100 text-primary-800 dark:bg-gray-700 dark:text-primary-400 border border-primary-400',
-            'secondary' => 'bg-secondary-100 text-secondary-800 dark:bg-gray-700 dark:text-secondary-400 border border-secondary-400',
-            'negative' => 'bg-negative-100 text-negative-800 dark:bg-gray-700 dark:text-negative-400 border border-negative-400',
-            'warning' => 'bg-warning-100 text-warning-800 dark:bg-gray-700 dark:text-warning-400 border border-warning-400',
-            'positive' => 'bg-positive-100 text-positive-800 dark:bg-gray-700 dark:text-positive-400 border border-positive-400',
-            'info' => 'bg-info-100 text-info-800 dark:bg-gray-700 dark:text-info-400 border border-info-400',
+            'primary' => 'bg-primary-100 text-primary-800 dark:bg-gray-700 dark:text-primary-500 border border-primary-500',
+            'secondary' => 'bg-secondary-100 text-secondary-800 dark:bg-gray-700 dark:text-secondary-500 border border-secondary-500',
+            'negative' => 'bg-negative-100 text-negative-800 dark:bg-gray-700 dark:text-negative-500 border border-negative-500',
+            'warning' => 'bg-warning-100 text-warning-800 dark:bg-gray-700 dark:text-warning-500 border border-warning-500',
+            'positive' => 'bg-positive-100 text-positive-800 dark:bg-gray-700 dark:text-positive-500 border border-positive-500',
+            'info' => 'bg-info-100 text-info-800 dark:bg-gray-700 dark:text-info-500 border border-info-500',
         ];
     }
 }

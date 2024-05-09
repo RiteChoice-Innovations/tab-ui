@@ -2,6 +2,8 @@
 
 namespace RiteChoiceInnovations\TabUi\Theme;
 
+use RiteChoiceInnovations\TabUi\Theme\Base\Rounded;
+
 class Input
 {
     public string $variant = 'outlined';
@@ -64,7 +66,7 @@ class Input
 
     private function roundedClasses(): array
     {
-        return Classes::rounded();
+        return Rounded::rounded();
     }
 
     public function size(string $size = ''): static

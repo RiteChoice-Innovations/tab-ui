@@ -11,8 +11,7 @@
         ->color($color)
         ->variant($variant)
         ->rounded($rounded)
-        ->size($size)
-        ->render();
+        ->size($size);
 @endphp
 
 <button {{ $attributes->merge(['type' => 'submit', 'class' => $class]) }}>
